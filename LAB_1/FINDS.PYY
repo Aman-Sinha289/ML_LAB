@@ -1,0 +1,18 @@
+import pandas as pd
+import numpy as np
+data = pd.read_csv("data.csv")
+print(data)
+a=np.array(data)
+print("The total number of training instances are:",len(a))
+num_attribute = len(a)-1
+hypothesis = ['0']*num_attribute
+print(hypothesis)
+for i in range(0,len(a)):
+    if a[i][num_attribute] == 'yes':
+        for j in range(0,num_attribute):
+            if hypothesis[j] == '0' or hypothesis[j] == a[i][j]:
+                hypothesis[j] = a[i][j]
+            else:
+                hypothesis[j] = '?'
+            print("\n The hypothesis for training instance {} is:".format(i+1),hypothesis)
+            print("The maximalyy specific hypothesis instance is",hypothesis)
